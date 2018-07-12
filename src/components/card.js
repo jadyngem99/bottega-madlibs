@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Input from "./input";
+import Content from "./content";
 
 class Card extends Component {
   constructor() {
@@ -11,8 +12,8 @@ class Card extends Component {
       pluralNoun: "",
       adjectiveOne: "",
       celebOne: "",
-      nounOne: "",
       adjectiveTwo: "",
+      nounOne: "",
       numberOne: "",
       numberTwo: "",
       nounTwo: "",
@@ -30,7 +31,6 @@ class Card extends Component {
 
   handleInputChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state);
   }
 
   render() {
@@ -47,12 +47,13 @@ class Card extends Component {
         name: "adjectiveOne"
       },
       { title: "Celebrity", state: this.state.celebOne, name: "celebOne" },
-      { title: "Noun", state: this.state.nounOne, name: "nounOne" },
       {
         title: "Adjective",
         state: this.state.adjectiveTwo,
         name: "adjectiveTwo"
       },
+      { title: "Noun", state: this.state.nounOne, name: "nounOne" },
+
       { title: "Number", state: this.state.numberOne, name: "numberOne" },
       { title: "Number", state: this.state.numberTwo, name: "numberTwo" },
       { title: "Noun", state: this.state.nounTwo, name: "nounTwo" },
@@ -80,31 +81,10 @@ class Card extends Component {
     return (
       <div className="card">
         {inputData.map(data => Input(data, this.handleInputChange))}
+        <Content data={this.state} />
       </div>
     );
   }
 }
 
 export default Card;
-
-/*
-    {Input("Color", this.state.color, this.handleInputChange, "color")}
-        {Input(
-          "Plural Noun",
-          this.state.pluralNoun,
-          this.handleInputChange,
-          "pluralNoun"
-        )}
-        {Input(
-          "Adjective",
-          this.state.adjectiveOne,
-          this.handleInputChange,
-          "adjectiveOne"
-        )}
-        {Input(
-          "Celebrity",
-          this.state.celebOne,
-          this.handleInputChange,
-          "celebOne"
-        )}
-*/
