@@ -13,6 +13,9 @@ class Content extends Component {
     this.count = 1;
   }
 
+  componentWillReceiveProps() {
+    this.count = 1;
+  }
   render() {
     const data = this.props.data;
     return (
